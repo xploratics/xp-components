@@ -2,45 +2,49 @@ function columnsComparer(a, b) {
     return a.displayName < b.displayName ? -1 : a.displayName > b.displayName ? 1 : 0;
 }
 
-module.exports = [function () {
+module.exports = ['$timeout', function ($timeout) {
     return {
         restrict: 'AE',
+        replace: true,
         scope: true,
+        //<ng-include src="filter.column.type"></ng-include>
         template: `
-            <md-dialog>
+            <md-dialog layout-padding style="width: 500px">
                 <md-dialog-content>
                     <div class="dialogHeader">
-                        <span translate="t.AvatarSelection"></span>
+                        <span translate="t.Filters">Filters</span>
                     </div>
 
-                    <xp-autocomplete
-                        xp-items="columns"
-                        xp-item-text="item.displayName"
-                        xp-search-text="autoCompleteText"
-                        xp-selected-item="selectedColumn"
-                        xp-selected-item-change="selectedColumnChanged(selectedColumn)"
-                        layout="row"/>
+                    <md-list>
+                        <md-subheader class="md-no-sticky">
+                            <xp-autocomplete
+                                xp-items="columns"
+                                xp-item-text="item.displayName"
+                                xp-search-text="autoCompleteText"
+                                xp-selected-item="selectedColumn"
+                                xp-selected-item-change="selectedColumnChanged(item)"/>
+                        </md-subheader>
 
-                    <ul layout="row">
-                        <li class="filter-item" ng-repeat="filter in filters">
-                            <ng-include src="filter.column.type"></ng-include>
-                            <md-button class="remove-filter" ng-click="removeFilter(filter)"><i>X</i></md-button>
-                        </li>
-                    </ul>
+                        <md-list-item class="secondary-button-padding" ng-repeat="filter in filters">
+                            <span>{{filter.column.displayName}}</span>
+                            <md-button class="md-secondary" ng-click="removeFilter(filter)">X</md-button>
+                        </md-list-item>
+                    </md-list>
                 </md-dialog-content>
-                <md-dialog-actions layout="row">
-                    <md-button translate="t.Cancel" ng-click="cancel()"></md-button>
-                    <md-button translate="t.Apply" ng-click="apply(filters)"></md-button>
+
+                <md-dialog-actions>
+                    <md-button translate="t.Cancel" ng-click="cancel()">Cancel</md-button>
+                    <md-button translate="t.Apply" ng-click="apply(filters)">Apply</md-button>
                 </md-dialog-actions>
             </md-dialog>`,
         link: function (scope, element, attrs) {
             scope.autoCompleteText = '';
             scope.filters = [];
-            scope.selectedColumn = 0;
+            scope.selectedColumn = null;
 
             scope.$watch('options.columnDefs', function (columns) {
                 scope.columns = [];
-                
+
                 if (!columns) return;
 
                 for (var i = 0; i < columns.length; i++)
@@ -65,7 +69,11 @@ module.exports = [function () {
 
                 // clear the autocomplete
                 scope.autoCompleteText = '';
-                scope.selectedColumn = 0;
+                scope.selectedColumn = null;
+
+                $timeout(function () {
+                    element.find('md-list-item').first().focus();
+                });
             };
         }
     }

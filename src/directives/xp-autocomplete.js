@@ -9,21 +9,25 @@ function searchableString(a) {
 
 module.exports = ['$parse', function ($parse) {
     return {
-        scope: true,
         restrict: 'E',
+        scope: {
+            xpItems: '=?',
+            xpSearchText: '=?',
+            xpSelectedItem: '=?'
+        },
         template: function (element, attrs) {
             return `<md-autocomplete
                 md-items="item in _items"
                 md-item-text="${attrs.xpItemText}"
-                md-search-text="${attrs.xpSearchText || '_search_text'}"
-                md-search-text-change="${attrs.xpSearchTextChange || ''}"
-                md-selected-item="${attrs.xpSelectedItem || ''}"
-                md-selected-item-change="${attrs.xpSelectedItemChange || ''}"
+                md-search-text="xpSearchText"
+                md-search-text-change="${attrs.xpSearchTextChange}"
+                md-selected-item="xpSelectedItem"
+                md-selected-item-change="selectedItemChange(xpSelectedItem)"
                 md-min-length="0"
                 md-autoselect="true"
                 md-match-case-insensitive="true">
                     <md-item-template>
-                        <span md-highlight-text="${attrs.xpSearchText || '_search_text' }" md-highlight-flags="i">{{${attrs.xpItemText}}}</span>
+                        <span md-highlight-text="xpSearchText" md-highlight-flags="i">{{${attrs.xpItemText}}}</span>
                     </md-item-template>
             </md-autocomplete>`;
         },
@@ -34,7 +38,9 @@ module.exports = ['$parse', function ($parse) {
             scope._items = [];
             scope._search_text = '';
 
-            scope.$watch(`[${attrs.xpItems},${attrs.xpSearchText || '_search_text' }]`, function (e) {
+            scope.selectedItemChange = item => scope.$parent.$eval(attrs.xpSelectedItemChange, { item });
+
+            scope.$watch(`[xpItems,xpSearchText]`, function (e) {
                 var items = e[0] || [];
                 var text = e[1] || '';
                 var array = [];
