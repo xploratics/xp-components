@@ -1,0 +1,33 @@
+{
+  "name": "xp-components",
+  "homepage": "https://github.com/xploratics/xp-components",
+  "authors": [
+    "Dany Laporte <dany_laporte@hotmail.com>"
+  ],
+  "private": true,
+  "description": "Components based on angular-materials",
+  "main": "lib.js",
+  "keywords": [
+    "angular",
+    "angularjs"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "^1.5.8",
+    "jquery": "^3.1.0",
+    "angular-ui-grid": "3.2.1"
+  },
+  "resolutions": {
+    "angular": "^1.5.8"
+  },
+  "dependencies": {
+    "angular-material": "^1.1.1"
+  }
+}

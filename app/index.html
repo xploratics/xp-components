@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="/bower_components/angular-ui-grid/ui-grid.css">
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+  </head>
+  <body ng-controller="app">
+    <!--<div ui-grid-facet-filtering="options"></div>
+    <div ui-grid="options"></div>-->
+    <!--<xp-filterbar></xp-filterbar>-->
+
+    <xp-autocomplete xp-items="options.columnDefs"
+        xp-item-text="item.displayName" 
+        xp-selected-item="selectedItem" 
+        xp-selected-item-change="selectedItemChanged(selectedItem)"></xp-autocomplete>
+
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-ui-grid/ui-grid.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+    <script src="/dist/lib.js"></script>
+    <script src="/app/app.js"></script>
+  </body>
+</html>
