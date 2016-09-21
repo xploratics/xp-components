@@ -10,10 +10,7 @@
     <div ui-grid="options"></div>-->
     <!--<xp-filterbar></xp-filterbar>-->
 
-    <xp-autocomplete xp-items="options.columnDefs"
-        xp-item-text="item.displayName" 
-        xp-selected-item="selectedItem" 
-        xp-selected-item-change="selectedItemChanged(selectedItem)"></xp-autocomplete>
+    <xp-gridfilter-button xp-grid-options="options"/>
 
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
