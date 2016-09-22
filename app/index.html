@@ -14,6 +14,14 @@
           padding: 0;
           margin: 0;
         }
+
+        div>[ui-grid] {
+          border: 0;
+        }
+
+        div>[ui-grid] .ui-grid-viewport {
+          overflow: auto !important;
+        }
     </style>
   </head>
   <body ng-controller="app">
@@ -22,8 +30,8 @@
     <!--<xp-filterbar></xp-filterbar>-->
 
     <div layout="column">
-      <xp-gridfilter-button xp-grid-options="options" flex="auto"></xp-gridfilter-button>
-      <div ui-grid="options"></div>
+      <xp-gridfilter-button xp-grid-options="options" layout="row" layout-align="end center"></xp-gridfilter-button>
+      <div ui-grid="options" flex="auto" ui-grid-resize-columns ui-grid-move-columns></div>
     </div>
 
     <script src="/bower_components/jquery/dist/jquery.js"></script>

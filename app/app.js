@@ -1,5 +1,5 @@
 angular
-    .module('app', ['ui.grid', 'xp.components'])
+    .module('app', ['ui.grid', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'xp.components'])
     .controller('app', ['$scope', function (scope) {
         scope.options = {
             columnDefs: [
@@ -8,10 +8,16 @@ angular
                 { field: 'email', displayName: 'email', width: "*" },
                 { field: 'birthDate', displayName: 'Birth Date', width: "*", filterType: 'date' }
             ],
-            data: [
-                {
-                    firstName: 'test'
-                }
-            ]
+            enableColumnMenus: false,
+            data: getData()
         };
+
+        function getData() {
+            var array = [];
+
+            for (var i = 0; i < 1000; i++) 
+                array.push({ firstName: 'Fname'+ i, lastName: 'Lname' + i });
+
+            return array;
+        }
     }]);
