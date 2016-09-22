@@ -1,5 +1,5 @@
 angular
-    .module('xpComponents', ['ngMaterial', 'ngMdIcons'])
+    .module('xp.components', ['ngMaterial', 'ngMdIcons'])
 
     // directives
     .directive('xpAutocomplete', require('./directives/xp-autocomplete'))

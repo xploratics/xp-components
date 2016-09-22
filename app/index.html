@@ -6,13 +6,25 @@
     <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" href="/bower_components/angular-material-icons/angular-material-icons.css">
     <link rel="stylesheet" href="/dist/xp-component.css">
+
+    <style>
+        html, body, body>div {
+          width: 100%;
+          height: 100%;
+          padding: 0;
+          margin: 0;
+        }
+    </style>
   </head>
   <body ng-controller="app">
     <!--<div ui-grid-facet-filtering="options"></div>
     <div ui-grid="options"></div>-->
     <!--<xp-filterbar></xp-filterbar>-->
 
-    <xp-gridfilter-button xp-grid-options="options"/>
+    <div layout="column">
+      <xp-gridfilter-button xp-grid-options="options" flex="auto"></xp-gridfilter-button>
+      <div ui-grid="options"></div>
+    </div>
 
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/angular/angular.js"></script>

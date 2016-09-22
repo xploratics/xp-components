@@ -58,8 +58,8 @@ module.exports = ['$mdDialog', '$timeout', function ($mdDialog, $timeout) {
                 options: gridOptions
             },
             template: `
-                <md-dialog class="xp-gridfilter" layout-padding>
-                    <div class="dialogHeader">
+                <md-dialog class="xp-gridfilter" aria-label="GridFilter" layout-padding>
+                    <div class="dialogHeader" flex="auto">
                         <span translate="t.Filters">Filters</span>
 
                         <xp-autocomplete
@@ -71,19 +71,19 @@ module.exports = ['$mdDialog', '$timeout', function ($mdDialog, $timeout) {
                             xp-selected-item-change="selectedColumnChanged(item)"/>
                     </div>
 
-                    <md-dialog-content>
+                    <md-dialog-content flex="100">
                         <md-list>
                             <md-list-item class="secondary-button-padding" ng-repeat="filter in filters">
                                 <ng-include flex="auto" src="'xp-gridfilter-' + (filter.column.filterType || 'string') + '.html'"></ng-include>
-                                <md-button class="md-secondary" flex="none" ng-click="removeFilter(filter)"><ng-md-icon icon="delete"></ng-md-icon></md-button>
+                                <md-button aria-label="RemoveFilter" class="md-secondary" ng-click="removeFilter(filter)"><ng-md-icon icon="delete"></ng-md-icon></md-button>
                             </md-list-item>
                         </md-list>
                     </md-dialog-content>
 
-                    <md-dialog-actions>
-                        <md-button translate="t.DeleteAll" ng-click="filters = []" ng-disabled="!filters.length">Delete All</md-button>
-                        <md-button translate="t.Cancel" ng-click="cancel()">Cancel</md-button>
-                        <md-button translate="t.Apply" ng-click="apply(filters)">Apply</md-button>
+                    <md-dialog-actions flex="auto">
+                        <md-button aria-label="DeleteAll" translate="t.DeleteAll" ng-click="filters = []" ng-disabled="!filters.length">Delete All</md-button>
+                        <md-button aria-label="Cancel" translate="t.Cancel" ng-click="cancel()">Cancel</md-button>
+                        <md-button aria-label="Apply" translate="t.Apply" ng-click="apply(filters)">Apply</md-button>
                     </md-dialog-actions>
                 </md-dialog>`
         };
