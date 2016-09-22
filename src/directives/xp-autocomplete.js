@@ -13,7 +13,8 @@ module.exports = ['$parse', function ($parse) {
         scope: {
             xpItems: '=?',
             xpSearchText: '=?',
-            xpSelectedItem: '=?'
+            xpSelectedItem: '=?',
+            xpFloatingLabel: '@'
         },
         template: function (element, attrs) {
             return `<md-autocomplete
@@ -25,7 +26,8 @@ module.exports = ['$parse', function ($parse) {
                 md-selected-item-change="selectedItemChange(xpSelectedItem)"
                 md-min-length="0"
                 md-autoselect="true"
-                md-match-case-insensitive="true">
+                md-match-case-insensitive="true"
+                md-floating-label="{{xpFloatingLabel}}">
                     <md-item-template>
                         <span md-highlight-text="xpSearchText" md-highlight-flags="i">{{${attrs.xpItemText}}}</span>
                     </md-item-template>
