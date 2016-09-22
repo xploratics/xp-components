@@ -1,10 +1,12 @@
 angular
-    .module('xpComponents', ['ngMaterial'])
+    .module('xpComponents', ['ngMaterial', 'ngMdIcons'])
 
     // directives
     .directive('xpAutocomplete', require('./directives/xp-autocomplete'))
     .directive('xpGridfilterButton', require('./directives/xp-gridfilter-button'))
-    //.directive('xpGridfilterDialog', require('./directives/xp-gridfilter-dialog'))
 
     // services  
-    .factory('xpGridfilterDialog', require('./services/xpGridfilterDialog'));
+    .factory('xpGridfilterDialog', require('./services/xpGridfilterDialog'))
+
+    // templates    
+    .run(require('./templates'));
