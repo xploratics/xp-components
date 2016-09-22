@@ -58,7 +58,7 @@ module.exports = ['$mdDialog', '$timeout', function ($mdDialog, $timeout) {
                 options: gridOptions
             },
             template: `
-                <md-dialog layout-padding style="min-width: 500px">
+                <md-dialog class="xp-gridfilter" layout-padding>
                     <div class="dialogHeader">
                         <span translate="t.Filters">Filters</span>
 
