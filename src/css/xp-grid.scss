@@ -1,0 +1,10 @@
+div.xp-grid {
+    width: 100%;
+    height: 100%;
+    [ui-grid] {
+        border: 0;
+        .ui-grid-viewport {
+            overflow: auto !important;
+        }
+    }
+}
