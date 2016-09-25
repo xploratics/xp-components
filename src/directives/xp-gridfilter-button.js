@@ -4,11 +4,9 @@ module.exports = ['xpGridfilterDialog', function (xpGridfilterDialog) {
         template: `<md-button aria-label="Filter" ng-click="showDialog()"><ng-md-icon icon="filter_list"></ng-md-icon></md-button>`,
         link: function (scope, element, attrs) {
             scope.showDialog = function () {
-                xpGridfilterDialog({
-                    filters: [],
-                    gridOptions: scope.$eval(attrs.xpGridOptions || '{}')
-                });
-            };
+                var gridOptions = scope.$eval(attrs.xpGridOptions || '{}');
+                xpGridfilterDialog({ gridOptions })
+            }
         }
     };
 }];
