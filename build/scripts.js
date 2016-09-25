@@ -5,6 +5,7 @@ var chalk = require('chalk');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var merge = require('utils-merge');
+var ngHtml2Js = require('browserify-ng-html2js');
 var path = require('path');
 var rename = require('gulp-rename');
 var source = require('vinyl-source-stream');
@@ -24,6 +25,7 @@ function build_js(options) {
         b = watchify(b, args);
 
     var b = b.transform(babelify, { presets: ["es2015"] });
+    b = b.transform(ngHtml2Js, { module: 'xp.components', baseDir: 'src/templates', stripPathBefore: '/templates' });
 
     bundle_js(b, options);
 

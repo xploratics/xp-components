@@ -9,7 +9,8 @@ angular
     .directive('xpGridfilterButton', require('./directives/xp-gridfilter-button'))
 
     // services  
-    .factory('xpGridfilterDialog', require('./services/xpGridfilterDialog'))
+    .factory('xpGridfilterDialog', require('./services/xpGridfilterDialog'));
 
-    // templates    
-    .run(require('./templates'));
+
+// load templates
+require('./templates');
