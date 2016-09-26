@@ -8,7 +8,6 @@ module.exports = ['$q', function ($q) {
         </div>`,
         link: function (scope, element, attrs) {
 
-            var filters;
             var sort;
             var mustReload;
             var page = 0;
@@ -28,12 +27,8 @@ module.exports = ['$q', function ($q) {
                 }
             });
 
-            scope.$watch('options.columnDefs', function (columns) {
-                if (columns) {
-                    filters = columns ? computeFilters(columns) : [];
-                    refresh.onNext(true);
-                }
-            });
+            scope.$watch('options.columnDefs', columns => scope.filters = computeFilters(columns), true);
+            scope.$watch('filters', _ => refresh.onNext(true), true); 
 
             function needLoadMoreData() {
                 refresh.onNext(false);
@@ -56,12 +51,7 @@ module.exports = ['$q', function ($q) {
                         scope.data = [];
                     }
 
-                    var params = angular.extend(filters, {
-                        sort,
-                        page,
-                        pageSize: 100
-                    });
-
+                    var params = angular.extend({ page, sort, pageSize: 100 }, scope.filters);
                     var result = options.fetch(params);
 
                     if (!result.subscribe)
@@ -72,11 +62,8 @@ module.exports = ['$q', function ($q) {
                 .$apply(scope)
                 .tap(function (data) {
                     page++;
-
-                    for (var i = 0; i < data.length; i++)
-                        options.data.push(data[i]);
-
-                    scope.options.gridApi.infiniteScroll.dataLoaded(data.length >= 100);
+                    options.data = options.data.concat(data);
+                    scope.options.gridApi.infiniteScroll.dataLoaded(false, data.length >= 100);
                 })
                 .subscribe();
         }
@@ -86,13 +73,14 @@ module.exports = ['$q', function ($q) {
 function computeFilters(columns) {
     var o = {};
 
-    for (var i = 0; i < columns.length; i++) {
-        var column = columns[i];
-        var filters = column.filters || [];
+    if (columns)
+        for (var i = 0; i < columns.length; i++) {
+            var column = columns[i];
+            var filters = column.filters || [];
 
-        if (filters.length)
-            o[column.name] = filters;
-    }
+            if (filters.length)
+                o[column.name] = filters;
+        }
 
     return o;
 }
