@@ -1,5 +1,5 @@
 angular
-    .module('xp.components', ['ngMaterial', 'ngMdIcons', 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.moveColumns'])
+    .module('xp.components', ['ngMaterial', 'ngMdIcons', 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.infiniteScroll'])
 
     //, 'ui.grid.infiniteScroll'
 
@@ -13,3 +13,5 @@ angular
 
     // templates
     .run(require('./templates'));
+
+require('./utils/rx');

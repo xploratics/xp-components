@@ -2,36 +2,32 @@ function columnsComparer(a, b) {
     return a.displayName < b.displayName ? -1 : a.displayName > b.displayName ? 1 : 0;
 }
 
-function loadFilters(columns, filters) {
-    var array = [];
+function loadFilters(columns) {
+    var result = [];
 
-    function getColumnByName(name) {
-        for (var i = 0; i < columns.length; i++)
-            if (columns[i].name === name)
-                return columns[i];
+    for (var i = 0; i < columns.length; i++) {
+        var column = columns[i];
+        var filters = angular.copy(column.filters || []);
+
+        for (var j = 0; j < filters.length; j++) {
+            var filter = filters[j];
+            filter.column = column;
+            result.push(filter);
+        }
     }
 
-    for (var i = 0; i < filters.length; i++) {
-        var f = filters[i];
-
-        f.column = getColumnByName(f.name);
-
-        if (f.column)
-            array.push(f);
-    }
-
-    return array.sort(columnsComparer);
+    return result;
 }
 
-function saveFilters(filters) {
+function saveFilters(columns, filters) {
+    for (var i = 0; i < columns.length; i++)
+        columns[i].filters = [];
 
     for (var i = 0; i < filters.length; i++) {
-        var f = filters[i];
-        f.name = f.column.name;
-        delete f.column;
+        var filter = filters[i];
+        filter.column.filters.push(filter);
+        delete filter.column;
     }
-
-    return filters;
 }
 
 module.exports = ['$mdDialog', '$timeout', function ($mdDialog, $timeout) {
@@ -44,11 +40,11 @@ module.exports = ['$mdDialog', '$timeout', function ($mdDialog, $timeout) {
             controller: ['$scope', '$mdDialog', function (scope, $mdDialog) {
 
                 scope.columns = gridOptions.columnDefs.slice().sort(columnsComparer);
-                scope.filters = loadFilters(scope.columns, gridOptions.filters);
+                scope.filters = loadFilters(scope.columns);
 
                 scope.apply = function (value) {
+                    saveFilters(scope.columns, scope.filters);
                     $mdDialog.hide(value);
-                    gridOptions.filters = saveFilters(scope.filters);
                 };
 
                 scope.cancel = _ => $mdDialog.cancel();

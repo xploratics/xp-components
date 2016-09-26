@@ -1,6 +1,6 @@
 angular
     .module('app', ['xp.components'])
-    .controller('app', ['$scope', function (scope) {
+    .controller('app', ['$scope', '$http', function (scope, http) {
         scope.options = {
             columnDefs: [
                 { field: 'firstName', displayName: 'First Name', width: "*", resizable: false },
@@ -8,9 +8,9 @@ angular
                 { field: 'email', displayName: 'email', width: "*" },
                 { field: 'birthDate', displayName: 'Birth Date', width: "*", filterType: 'date' }
             ],
-            data: getData(),
-            needLoadMoreData,
-            needLoadMoreDataTop
+            fetch: function (params) {
+                return http({ url: '/api/users', method: 'GET', params }).then(e => e.data);
+            }
         };
 
         function getData() {
@@ -20,14 +20,6 @@ angular
                 array.push({ firstName: 'Fname' + i, lastName: 'Lname' + i });
 
             return array;
-        }
-
-        function needLoadMoreData(e) {
-
-        }
-
-        function needLoadMoreDataTop(e) {
-
         }
 
     }]);
