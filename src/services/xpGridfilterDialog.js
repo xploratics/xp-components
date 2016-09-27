@@ -71,7 +71,9 @@ module.exports = ['$mdDialog', '$timeout', function ($mdDialog, $timeout) {
                         scope.autoCompleteText = '';
                         scope.selectedColumn = null;
 
-                        angular.element('md-dialog md-list-item input').first().focus();
+                        var input = document.querySelector('.xp-gridfilter-item input');
+                        if (input)
+                            input.focus();
                     });
                 };
             }],

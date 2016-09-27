@@ -1,11 +1,11 @@
 <div layout="row" layout-align="center center">
     <label ng-bind="filter.column.displayName"></label>
     <md-input-container>
-        <label>From</label>
+        <label>{{ 't.From' | xpComponentsTranslate }}</label>
         <md-input ng-model="filter.from"></md-input>
     </md-input-container>
     <md-input-container>
-        <label>To</label>
+        <label>{{ 't.To' | xpComponentsTranslate }}</label>
         <md-input ng-model="filter.to"></md-input>
     </md-input-container>
 </div>
