@@ -31,14 +31,14 @@ function build_css(options) {
 gulp.task('build:css', ['build:css+maps'], function () {
     return build_css({
         minify: true,
-        outputFile: './dist/xp-component.min.css'
+        outputFile: './dist/xp-components.min.css'
     });
 });
 
 gulp.task('build:css+maps', function () {
     return build_css({
         minify: false,
-        outputFile: './dist/xp-component.css'
+        outputFile: './dist/xp-components.css'
     });
 });
 

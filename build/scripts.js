@@ -85,7 +85,7 @@ function map_error(err) {
 gulp.task('watch:js', function () {
     return build_js({
         inputFile: './src/lib.js',
-        outputFile: './dist/xp-component.js',
+        outputFile: './dist/xp-components.js',
         watch: true
     });
 });
@@ -93,12 +93,12 @@ gulp.task('watch:js', function () {
 gulp.task('build:js', function () {
     build_js({
         inputFile: './src/lib.js',
-        outputFile: './dist/xp-component.js',
+        outputFile: './dist/xp-components.js',
     });
 
     build_js({
         inputFile: './src/lib.js',
-        outputFile: './dist/xp-component.min.js',
+        outputFile: './dist/xp-components.min.js',
         minify: true
     });
 });
