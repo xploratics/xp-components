@@ -12,7 +12,8 @@
     "start-selenium": "docker run -d -n selenium -p 4444:4444 -P selenium/standalone-firefox",
     "start": "concurrently --kill-others --raw \"npm run watch\" \"node server.js\"",
     "build": "gulp build",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "gulp": "gulp"
   },
   "repository": {
     "type": "git",
