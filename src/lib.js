@@ -1,21 +1,18 @@
 angular
-    .module('xp.components', ['ngMaterial', 'ngMdIcons', 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.infiniteScroll'])
+    .module('xp.components', ['ngMaterial', 'ngMdIcons', 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.infiniteScroll', 'pascalprecht.translate'])
 
     // directives
     .directive('xpAutocomplete', require('./directives/xp-autocomplete'))
     .directive('xpGrid', require('./directives/xp-grid'))
     .directive('xpGridfilterButton', require('./directives/xp-gridfilter-button'))
 
-    // filters
-    .filter('xpComponentsTranslate', require('./filters/xpComponentsTranslate'))
-
     // services  
     .factory('xpGridfilterDialog', require('./services/xpGridfilterDialog'))
 
     // templates
     .run(require('./templates'))
-    
-    // values
-    .value('xpComponentsLocal', require('./values/xpComponentsLocal'));
+
+    // translations
+    .config(require('./translations'));
 
 require('./utils/rx');
