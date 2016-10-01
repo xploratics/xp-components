@@ -1,6 +1,6 @@
 angular
-    .module('app', ['xp.components'])
-    .controller('app', ['$scope', '$http', function (scope, http) {
+    .module('app', ['xp.components', 'ngMaterial'])
+    .controller('app', ['$scope', '$http', '$rootScope', function (scope, http, $rootScope) {
         scope.options = {
             columnDefs: [
                 { field: 'firstName', displayName: 'First Name', width: "*", resizable: false },
@@ -21,5 +21,13 @@ angular
 
             return array;
         }
+
+        $rootScope.currentTheme = 'default';
+
+        var i = 0;
+
+        scope.toggleTheme = function () {
+            $rootScope.currentTheme = (++i % 2 === 0) ? 'default' : 'dark';
+        };
 
     }]);

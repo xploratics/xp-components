@@ -20,7 +20,7 @@
   </style>
 </head>
 
-<body ng-controller="app">
+<body ng-controller="app" md-theme="{{currentTheme}}">
   <!--<div ui-grid-facet-filtering="options"></div>
     <div ui-grid="options"></div>-->
   <!--<xp-filterbar></xp-filterbar>-->
@@ -29,6 +29,10 @@
       <xp-gridfilter-button xp-grid-options="options" layout="row" layout-align="end center"></xp-gridfilter-button>
       <div ui-grid="options" flex="auto" ui-grid-resize-columns ui-grid-move-columns ui-grid-infinite-scroll></div>
     </div>-->
+    <md-toolbar layout-align="center start">
+      <md-button ng-click="toggleTheme()">Toggle Theme</md-button>
+    </md-toolbar>
+  
   <xp-grid xp-grid-options="options"></xp-grid>
 
   <script src="/bower_components/angular/angular.js"></script>
@@ -41,6 +45,7 @@
   <script src="/bower_components/angular-translate/angular-translate.js"></script>
   <script src="/dist/xp-components.js"></script>
   <script src="/app/app.js"></script>
+  <script src="/app/theming.js"></script>
 </body>
 
 </html>
