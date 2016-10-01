@@ -20,7 +20,7 @@
   </style>
 </head>
 
-<body ng-controller="app" md-theme="{{currentTheme}}">
+<body ng-controller="app" md-theme="{{currentTheme}}" layout="column">
   <!--<div ui-grid-facet-filtering="options"></div>
     <div ui-grid="options"></div>-->
   <!--<xp-filterbar></xp-filterbar>-->
@@ -33,16 +33,16 @@
       <md-button ng-click="toggleTheme()">Toggle Theme</md-button>
     </md-toolbar>
   
-  <xp-grid xp-grid-options="options"></xp-grid>
+  <xp-grid xp-grid-options="options" flex></xp-grid>
 
   <script src="/bower_components/angular/angular.js"></script>
   <script src="/bower_components/angular-ui-grid/ui-grid.js"></script>
   <script src="/bower_components/angular-aria/angular-aria.js"></script>
   <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-translate/angular-translate.js"></script>
   <script src="/bower_components/angular-material/angular-material.js"></script>
   <script src="/bower_components/angular-material-icons/angular-material-icons.js"></script>
   <script src="/bower_components/rxjs/dist/rx.lite.js"></script>
-  <script src="/bower_components/angular-translate/angular-translate.js"></script>
   <script src="/dist/xp-components.js"></script>
   <script src="/app/app.js"></script>
   <script src="/app/theming.js"></script>
