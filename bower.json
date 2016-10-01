@@ -6,21 +6,25 @@
     "Dany Laporte <dany_laporte@hotmail.com>"
   ],
   "description": "Components based on angular-materials",
-  "main": "lib.js",
+  "main": "dist/xp-components.js",
   "keywords": [
     "angular",
-    "angularjs"
+    "angularjs",
+    "material"
   ],
   "license": "MIT",
   "ignore": [
+    "*.js",
     "**/.*",
     "app",
-    "node_modules",
     "bower_components",
     "build",
+    "docs",
+    "node_modules",
+    "package.json",
+    "README.md",
     "src",
-    "test",
-    "tests"
+    "test"
   ],
   "resolutions": {
     "angular": "^1.5.8"
