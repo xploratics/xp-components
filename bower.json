@@ -5,7 +5,6 @@
   "authors": [
     "Dany Laporte <dany_laporte@hotmail.com>"
   ],
-  "private": true,
   "description": "Components based on angular-materials",
   "main": "lib.js",
   "keywords": [
