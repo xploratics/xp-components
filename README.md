@@ -16,20 +16,20 @@ Then add a `<script>` to your `index.html`:
   <link rel="stylesheet" type="text/css" href="/bower_components/angular-ui-grid/ui-grid.css">
   <link rel="stylesheet" type="text/css" href="/bower_components/angular-material/angular-material.css">
   <link rel="stylesheet" type="text/css" href="/bower_components/angular-material-icons/angular-material-icons.css">
-  <link rel="stylesheet" type="text/css" href="/dist/xp-components.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/xp-components/dist/xp-components.css">
 
   <script src="/bower_components/angular-ui-grid/ui-grid.js"></script>
   <script src="/bower_components/angular-translate/angular-translate.js"></script>
   <script src="/bower_components/angular-material/angular-material.js"></script>
   <script src="/bower_components/angular-material-icons/angular-material-icons.js"></script>
   <script src="/bower_components/rxjs/dist/rx.lite.js"></script>
-  <script src="/bower_components/xp-components/xp-components.js"></script>
+  <script src="/bower_components/xp-components/dist/xp-components.js"></script>
 ```
 
-Once you have all the necessary assets installed, add `xp-components` as a dependency for your app:
+Once you have all the necessary assets installed, add `xp.components` as a dependency for your app:
 
 ```js
-  angular.module('myApp', ['xp-components']);
+  angular.module('myApp', ['xp.components']);
 ```
 
 ## xp-autocomplete
