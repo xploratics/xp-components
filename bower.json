@@ -34,7 +34,6 @@
     "angular-material": "^1.1.1",
     "angular-material-icons": "^0.7.1",
     "angular-ui-grid": "^3.2.9",
-    "rxjs": "^4.1.0",
-    "angular-translate": "^2.12.1"
+    "rxjs": "^4.1.0"
   }
 }

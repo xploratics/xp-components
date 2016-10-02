@@ -1,9 +1,9 @@
 <md-dialog class="xp-gridfilter" aria-label="GridFilter" layout-padding>
     <div class="dialogHeader" flex="auto">
-        <span>{{'xp-components.t.Filters' | translate }}</span>
+        <span>{{'t.Filters' | xpComponentsTranslate }}</span>
 
         <xp-autocomplete
-            xp-floating-label="{{ 'xp-components.t.ChooseAColumn' | translate }}"
+            xp-floating-label="{{ 't.ChooseAColumn' | xpComponentsTranslate }}"
             xp-items="columns"
             xp-item-text="item.displayName"
             xp-search-text="autoCompleteText"
@@ -21,8 +21,8 @@
     </md-dialog-content>
 
     <md-dialog-actions flex="auto">
-        <md-button aria-label="DeleteAll" translate="xp-components.t.DeleteAll" ng-click="filters = []" ng-disabled="!filters.length"></md-button>
-        <md-button aria-label="Cancel" translate="xp-components.t.Cancel" ng-click="cancel()"></md-button>
-        <md-button aria-label="Apply" translate="xp-components.t.Apply" ng-click="apply(filters)"></md-button>
+        <md-button aria-label="DeleteAll" ng-click="filters = []" ng-disabled="!filters.length">{{'t.DeleteAll' | xpComponentsTranslate}}</md-button>
+        <md-button aria-label="Cancel" ng-click="cancel()">{{'t.Cancel' | xpComponentsTranslate}}</md-button>
+        <md-button aria-label="Apply" ng-click="apply(filters)">{{'t.Apply' | xpComponentsTranslate}}</md-button>
     </md-dialog-actions>
 </md-dialog>

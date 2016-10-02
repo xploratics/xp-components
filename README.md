@@ -19,7 +19,6 @@ Then add a `<script>` to your `index.html`:
   <link rel="stylesheet" type="text/css" href="/bower_components/xp-components/dist/xp-components.css">
 
   <script src="/bower_components/angular-ui-grid/ui-grid.js"></script>
-  <script src="/bower_components/angular-translate/angular-translate.js"></script>
   <script src="/bower_components/angular-material/angular-material.js"></script>
   <script src="/bower_components/angular-material-icons/angular-material-icons.js"></script>
   <script src="/bower_components/rxjs/dist/rx.lite.js"></script>
