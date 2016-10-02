@@ -50,6 +50,7 @@
     "jasmine": "^2.5.2",
     "merge-stream": "^1.0.0",
     "protractor": "^4.0.8",
+    "run-sequence": "^1.2.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
