@@ -48,7 +48,7 @@ module.exports = ['$q', function ($q) {
 
                     if (reload) {
                         page = 1;
-                        scope.data = [];
+                        options.data = [];
                     }
 
                     var params = angular.extend({ page, sort, pageSize: 100 }, scope.filters);
