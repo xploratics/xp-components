@@ -11,6 +11,7 @@ angular
 
     // services  
     .factory('xpGridfilterDialog', require('./services/xpGridfilterDialog'))
+    .factory('xpGridService', require('./services/xpGridService'))
     .factory('xpComponentsTranslateService', require('./services/xpComponentsTranslateService'))
 
     // templates

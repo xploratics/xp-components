@@ -7,7 +7,7 @@ function loadFilters(columns) {
 
     for (var i = 0; i < columns.length; i++) {
         var column = columns[i];
-        var filters = angular.copy(column.filters || []);
+        var filters = angular.copy(column.columnDef.filters || []);
 
         for (var j = 0; j < filters.length; j++) {
             var filter = filters[j];
@@ -21,11 +21,11 @@ function loadFilters(columns) {
 
 function saveFilters(columns, filters) {
     for (var i = 0; i < columns.length; i++)
-        columns[i].filters = [];
+        columns[i].columnDef.filters = [];
 
     for (var i = 0; i < filters.length; i++) {
         var filter = filters[i];
-        filter.column.filters.push(filter);
+        filter.column.columnDef.filters.push(filter);
         delete filter.column;
     }
 }
@@ -37,9 +37,16 @@ module.exports = ['$mdDialog', '$timeout', function ($mdDialog, $timeout) {
         var dialog = {
             bindToController: true,
             clickOutsideToClose: true,
-            controller: ['$scope', '$mdDialog', function (scope, $mdDialog) {
+            controller: ['$scope', '$mdDialog', 'xpGridService', function (scope, $mdDialog, xpGridService) {
 
-                scope.columns = gridOptions.columnDefs.slice().sort(columnsComparer);
+                scope.columns = gridOptions
+                    .columnDefs
+                    .map(columnDef => ({ 
+                        columnDef,
+                        displayName: xpGridService.getColumnDisplayName(columnDef)
+                    }))
+                    .sort(columnsComparer);
+
                 scope.filters = loadFilters(scope.columns);
 
                 scope.apply = function (value) {
