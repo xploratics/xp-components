@@ -1,4 +1,4 @@
-module.exports = ['$q', function ($q) {
+module.exports = ['$q', '$http', function ($q, $http) {
     return {
         restrict: 'E',
         scope: true,
@@ -62,7 +62,7 @@ module.exports = ['$q', function ($q) {
                     }
 
                     var params = angular.extend({ page, sort, pageSize: 100 }, scope.filters);
-                    var result = options.fetch(params);
+                    var result = typeof options.fetch === 'string' ? $http({ url: options.fetch, params }) : options.fetch(params);
 
                     if (!result.subscribe)
                         result = Rx.Observable.fromPromise($q.when(result));
@@ -71,6 +71,7 @@ module.exports = ['$q', function ($q) {
                 })
                 .$apply(scope)
                 .tap(function (data) {
+                    if (data.data) data = data.data;
                     page++;
                     options.data = options.data.concat(data);
                     scope.options.gridApi.infiniteScroll.dataLoaded(false, data.length >= 100);

@@ -8,9 +8,8 @@ angular
                 { field: 'email', displayName: 'email', width: "*" },
                 { field: 'birthDate', displayName: 'Birth Date', width: "*", filterType: 'date' }
             ],
-            fetch: function (params) {
-                return $http({ url: '/api/users', params }).then(e => e.data);
-            }
+            fetch: params => $http({ url: '/api/users', params })
+            //fetch: '/api/users'
         };
 
         $rootScope.currentTheme = 'default';
