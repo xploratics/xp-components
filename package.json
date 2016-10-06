@@ -1,6 +1,6 @@
 {
   "name": "xp-components",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Components based on angular-materials",
   "main": "index.js",
   "private": true,
