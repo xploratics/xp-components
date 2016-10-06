@@ -46,6 +46,8 @@ directive of angular-material.
 
 Wraps the [angular ui-grid](http://ui-grid.info/) and give it a "material design" look.
 
+[Reference](docs/grid.md)
+
 ### example
 
 ![Image of the grid](docs/assets/grid.jpg)
