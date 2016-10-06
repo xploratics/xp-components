@@ -27,8 +27,17 @@ module.exports = ['$q', function ($q) {
                 }
             });
 
+            options.refresh = _ => refresh.onNext(true);
+
             scope.$watch('options.columnDefs', columns => scope.filters = computeFilters(columns), true);
-            scope.$watch('filters', _ => refresh.onNext(true), true); 
+            scope.$watch('filters', _ => refresh.onNext(true), true);
+
+            scope.rowClick = function rowClick(e) {
+                options.selectedRow = e.row;
+
+                if (options.rowClick)
+                    options.rowClick(e);
+            };
 
             function needLoadMoreData() {
                 refresh.onNext(false);
@@ -49,6 +58,7 @@ module.exports = ['$q', function ($q) {
                     if (reload) {
                         page = 1;
                         options.data = [];
+                        options.selectedRow = null;
                     }
 
                     var params = angular.extend({ page, sort, pageSize: 100 }, scope.filters);
