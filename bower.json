@@ -6,7 +6,13 @@
     "Dany Laporte <dany_laporte@hotmail.com>"
   ],
   "description": "Components based on angular-materials",
-  "main": "dist/xp-components.js",
+  "main": [
+    "./dist/xp-components.css",
+    "./dist/xp-components.css.map",
+    "./dist/xp-components.min.css",
+    "./dist/xp-components.js",
+    "./dist/xp-components.min.js"
+  ],
   "keywords": [
     "angular",
     "angularjs",
