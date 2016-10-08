@@ -1,5 +1,5 @@
 angular
-    .module('app', ['xp.components', 'ngMaterial'])
+    .module('app', ['ngRoute', 'xp.components', 'ngMaterial'])
     .controller('app', ['$scope', '$http', '$rootScope', function (scope, $http, $rootScope) {
         scope.options = {
             columnDefs: [

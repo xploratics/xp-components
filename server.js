@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 
+app.use('/api/genders', getGenders);
 app.use('/api/users', getUsers);
 app.use(express.static('./'));
 
@@ -13,6 +14,15 @@ var users = [];
 for (var i = 0; i < 1000; i++)
     users.push({ firstName: 'fname' + i, lastName: 'lname' + i });
 
+function getGenders(req, res) {
+    var array = [
+        { key: "unknown", displayName: "Unknown" },
+        { key: "male", displayName: "Man" },
+        { key: "female", displayName: "Woman" }
+    ];
+
+    res.json(array);
+}
 
 function getUsers(req, res) {
     var page = req.query.page || 1;

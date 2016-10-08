@@ -21,21 +21,16 @@
 </head>
 
 <body ng-controller="app" md-theme="{{currentTheme}}" layout="column">
-  <!--<div ui-grid-facet-filtering="options"></div>
-    <div ui-grid="options"></div>-->
-  <!--<xp-filterbar></xp-filterbar>-->
-
-  <!--<div layout="column">
-      <xp-gridfilter-button xp-grid-options="options" layout="row" layout-align="end center"></xp-gridfilter-button>
-      <div ui-grid="options" flex="auto" ui-grid-resize-columns ui-grid-move-columns ui-grid-infinite-scroll></div>
-    </div>-->
-    <md-toolbar layout-align="center start">
-      <md-button ng-click="toggleTheme()">Toggle Theme</md-button>
-    </md-toolbar>
+  <md-toolbar layout-align="center start">
+    <md-button ng-click="toggleTheme()">Toggle Theme</md-button>
+  </md-toolbar>
+  <md-content id="mainView" layout="column" flex layout-padding ng-view></md-content>
+    
   
-  <xp-grid xp-grid-options="options" flex></xp-grid>
+  
 
   <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-route/angular-route.js"></script>
   <script src="/bower_components/angular-ui-grid/ui-grid.js"></script>
   <script src="/bower_components/angular-aria/angular-aria.js"></script>
   <script src="/bower_components/angular-animate/angular-animate.js"></script>
@@ -45,6 +40,10 @@
   <script src="/dist/xp-components.js"></script>
   <script src="/app/app.js"></script>
   <script src="/app/theming.js"></script>
+
+  <script src="/app/modules/home/homeController.js"></script>
+  <script src="/app/modules/autoComplete/autoCompleteController.js"></script>
+  <script src="/app/modules/grid/gridController.js"></script>
 </body>
 
 </html>

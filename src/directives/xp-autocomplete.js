@@ -7,14 +7,16 @@ function searchableString(a) {
 ///     <xp-autocomplete xp-items="item in items" xp-item-text="item.display"></xp-autocomplete>
 ///
 
-module.exports = ['$parse', function ($parse) {
+module.exports = ['$parse', '$http', function ($parse, http) {
     return {
         restrict: 'E',
         scope: {
+            xpFetch: '@',
             xpItems: '=?',
             xpSearchText: '=?',
             xpSelectedItem: '=?',
-            xpFloatingLabel: '@'
+            xpFloatingLabel: '@',
+            xpValue: '=?'
         },
         template: function (element, attrs) {
             return `<md-autocomplete
@@ -27,6 +29,7 @@ module.exports = ['$parse', function ($parse) {
                 md-min-length="0"
                 md-autoselect="true"
                 md-match-case-insensitive="true"
+                md-input-name="${attrs.xpInputName}"
                 md-floating-label="{{xpFloatingLabel}}">
                     <md-item-template>
                         <span md-highlight-text="xpSearchText" md-highlight-flags="i">{{${attrs.xpItemText}}}</span>
@@ -39,6 +42,9 @@ module.exports = ['$parse', function ($parse) {
 
             scope._items = [];
             scope._search_text = '';
+
+            if (attrs.xpFetch)
+                http({ url: attrs.xpFetch }).then(e => scope.xpItems = e.data);
 
             scope.selectedItemChange = item => scope.$parent.$eval(attrs.xpSelectedItemChange, { item });
 
